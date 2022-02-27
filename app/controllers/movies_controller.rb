@@ -11,7 +11,7 @@ class MoviesController < ApplicationController
     end
   
     def index
-      # @movies = Movie.all 
+      #@movies = Movie.all
       @all_ratings = Movie.ratings 
       @ratings = @all_ratings 
       @ratings =  params[:ratings].keys if params[:ratings] 
@@ -35,7 +35,10 @@ class MoviesController < ApplicationController
       elsif !params[:ratings] && session[:ratings]
         flash.keep
         return redirect_to movies_path(sort: params[:sort], ratings: session[:ratings])
+      #else
+      #  return @movies = Movie.all
       end
+      
     end
   
     def new
